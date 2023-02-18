@@ -93,6 +93,10 @@ public class SellRepo {
         View = true;
     }
 
+    public int getPage(){
+        return Page;
+    }
+
     public void setPage(int page){
         Page = page;
         toInv();
