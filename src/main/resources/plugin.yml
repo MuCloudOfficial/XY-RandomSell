@@ -1,0 +1,33 @@
+#===================================================#
+#                 Made in Starry Sky.               #
+#===================================================#
+#              该文件内的所有项目禁止修改！             #
+#===================================================#
+main: me.mucloud.plugin.XY.RandomSell.Main
+api-version: 1.13
+#===================================================#
+name: XY-RandomSell
+versionCN: 星空
+version: StarrySky
+internalVersion: 1.1001
+authors: [ "Mu_Cloud" ]
+website: https://github.com/MuCloudOfficial/XY-RandomSell
+softdepend: [ "Vault" , "PlaceholderAPI" ]
+#===================================================#
+newVersionDetail: [ "最新版本细节概述" ]
+#===================================================#
+commands:
+  xyrs:
+    description: The XY-RandomSell Main Command.
+    usage: /mkes [args...]
+#===================================================#
+permissions:
+  xyrs.admin:
+    description: The XY-RandomSell Admin Permission.
+    default: op
+  xyrs.gui:
+    description: The XY-RandomSell GUI Permission.
+    default: true
+#===================================================#
+#       The Adv.Tech of TwilightCloudPavilion       #
+#===================================================#
