@@ -8,7 +8,7 @@ public final class MainConsole {
     private static final ConsoleCommandSender CCS = Main.INSTANCE.getServer().getConsoleSender();
 
     private static String preProcess(String message){
-        return "§7§l[" + Main.PREFIX + "§7§l]" + message;
+        return "§7§l[" + Main.PREFIX + "§7§l] " + message;
     }
 
     public static void sendMessage(String message){
@@ -16,11 +16,11 @@ public final class MainConsole {
     }
 
     public static void warn(String messageWithoutColorChar){
-        CCS.sendMessage("§6" + messageWithoutColorChar);
+        CCS.sendMessage(preProcess("§6" + messageWithoutColorChar));
     }
 
     public static void err(String messageWithoutColorChar){
-        CCS.sendMessage("§4" + messageWithoutColorChar);
+        CCS.sendMessage(preProcess("§4" + messageWithoutColorChar));
     }
 
 }

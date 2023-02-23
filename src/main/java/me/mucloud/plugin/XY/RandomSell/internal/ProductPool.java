@@ -21,7 +21,7 @@ public class ProductPool {
 
     public void regFromFile(){
         for (String s : C.getRAW_Product_LIST()) {
-            if(s.split(",").length != 3){
+            if(s.split(",").length != 4){
                 MainConsole.warn("当前收购项条目错误" + s + "   已跳过");
                 continue;
             }

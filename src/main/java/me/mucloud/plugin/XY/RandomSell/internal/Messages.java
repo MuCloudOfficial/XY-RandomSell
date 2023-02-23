@@ -23,7 +23,7 @@ public class Messages {
     private static String LangVersion;
     private static final List<String> LangVersionCompatibility
             = List.of(
-                    "StarrySky_L1.1"
+                    "StarrySky_L1.3"
             );
     private static String Locale;
     private static final List<String> LocaleCompatibility
@@ -124,10 +124,10 @@ public class Messages {
             CONFIG_VERSION_INCOMPATIBLE = convert(fc.getString(Locale + ".CONFIG_VERSION_INCOMPATIBLE"), null, null);
             CONFIG_ERROR = convert(fc.getString(Locale + ".CONFIG_ERROR"), null, null);
 
-            SELLREPO_REF_ERROR_BY_EMPTY = convert(fc.getString(Locale + "SELLREPO_REF_ERROR_BY_EMPTY"), null, null);
-            SELLREPO_REF_FINISH = convert(fc.getString(Locale + "SELLREPO_REF_FINISH"), null, null);
+            SELLREPO_REF_ERROR_BY_EMPTY = convert(fc.getString(Locale + ".SELLREPO_REF_ERROR_BY_EMPTY"), null, null);
+            SELLREPO_REF_FINISH = convert(fc.getString(Locale + ".SELLREPO_REF_FINISH"), null, null);
             SELLREPO_REF_ALL_FINISH = convert(fc.getString(Locale + ".SELLREPO_REF_ALL_FINISH"), null, null);
-            PLAYER_NOT_FOUND = convert(fc.getString(Locale + "PLAYER_NOT_FOUND"), null, null);
+            PLAYER_NOT_FOUND = convert(fc.getString(Locale + ".PLAYER_NOT_FOUND"), null, null);
 
             GUI_SELL_TITLE = convert(fc.getString(Locale + ".GUI_SELL_TITLE"), null, null);
             GUI_INCOMPATIBLE = convert(fc.getString(Locale + ".GUI_INCOMPATIBLE"), null, null);
@@ -153,6 +153,7 @@ public class Messages {
             throw new RuntimeException(e);
         } catch (NullPointerException e){
             MainConsole.err("语言文件错误，请重新检查语言文件，本次启动被取消");
+            e.printStackTrace();
             LangFile.renameTo(new File(Main.INSTANCE.getDataFolder(), "lang_" + new SimpleDateFormat("yyMMddHHmmss").format(new Date()) + ".yml"));
             Main.INSTANCE.saveResource("lang.yml", false);
             Bukkit.getPluginManager().disablePlugin(Main.INSTANCE);
@@ -166,6 +167,9 @@ public class Messages {
     }
 
     public static List<String> convert(List<String> list, Map<String, String> replacedMap){
+        if(replacedMap == null){
+            return list;
+        }
         List<String> result = new ArrayList<>();
         list.forEach( l -> replacedMap.forEach( (k, v) -> result.add(convert(l, k, v))));
         return result;

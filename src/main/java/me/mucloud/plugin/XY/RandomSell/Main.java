@@ -13,7 +13,7 @@ import java.util.Objects;
 
 public class Main extends JavaPlugin {
 
-    public static final String PREFIX = "§a§lXY7§-§6RandomSell";
+    public static final String PREFIX = "§b§lXY§7§l-§e§lRandomSell";
     public static Main INSTANCE;
 
     private static Economy Econ;
@@ -30,8 +30,8 @@ public class Main extends JavaPlugin {
         Messages.loadMessage(INSTANCE);
         requestHookVault();
         requestHookPAPI();
-        MainConsole.sendMessage(PREFIX + "§b§lMADE IN STARRY SKY.");
-        MainConsole.sendMessage(PREFIX + Messages.PLUGIN_ENABLING);
+        MainConsole.sendMessage("§b§lMADE IN STARRY SKY.");
+        MainConsole.sendMessage(Messages.PLUGIN_ENABLING);
         C = new Configuration(this);
         C.initialize();
 
@@ -51,13 +51,13 @@ public class Main extends JavaPlugin {
 
     private void requestHookVault(){
         if (getServer().getPluginManager().getPlugin("Vault") == null) {
-            MainConsole.sendMessage(Main.PREFIX + Messages.PLUGIN_NOT_FOUND_VAULT);
+            MainConsole.sendMessage(Messages.PLUGIN_NOT_FOUND_VAULT);
             getServer().getPluginManager().disablePlugin(INSTANCE);
             return;
         }
         RegisteredServiceProvider<Economy> rsp = getServer().getServicesManager().getRegistration(Economy.class);
         if (rsp == null) {
-            MainConsole.sendMessage(Main.PREFIX + Messages.PLUGIN_NOT_COMPATIBLE_VAULT);
+            MainConsole.sendMessage(Messages.PLUGIN_NOT_COMPATIBLE_VAULT);
             getServer().getPluginManager().disablePlugin(INSTANCE);
             return;
         }
@@ -67,7 +67,7 @@ public class Main extends JavaPlugin {
 
     private void requestHookPAPI(){
         if(Bukkit.getPluginManager().getPlugin("PlaceholderAPI") == null){
-            MainConsole.sendMessage(Main.PREFIX + Messages.PLUGIN_NOT_FOUND_PAPI);
+            MainConsole.sendMessage(Messages.PLUGIN_NOT_FOUND_PAPI);
         }else{
             HookPAPI = true;
             MainConsole.sendMessage(Messages.PLUGIN_VAULT_HOOKED);

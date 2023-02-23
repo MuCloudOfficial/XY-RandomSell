@@ -12,7 +12,7 @@
 # 语言文件版本
 # ！！！若非特殊说明，请不要随意改动该设置！！！
 # ！！！对于无端改动该设置可能造成的设置丢失问题与作者无关，也不要提交至 ISSUE！！！
-Version: StarrySky_L1.1
+Version: StarrySky_L1.3
 
 # 语言
 # 默认简体中文
@@ -36,13 +36,13 @@ zh_CN:
   CONFIG_VERSION_INCOMPATIBLE: "&4&l设置文件不兼容，已使用插件内部设置文件替换，原设置文件已备份"
   CONFIG_ERROR: "&4&l设置项错误，已使用插件内部设置文件替换，原设置文件已备份"
 
-  GUI_SELL_TITLE: "&1&l收购列表"
-  GUI_INCOMPATIBLE: "&4&l控制台无法调用该功能"
-
   SELLREPO_REF_ERROR_BY_EMPTY: "§4§l刷新失败，该玩家的收购可能已经处于等待刷新状态"
   SELLREPO_REF_FINISH: "§a§l已刷新 {player} §a§l的收购"
   SELLREPO_REF_ALL_FINISH: "§a§l已刷新所有玩家的收购"
   PLAYER_NOT_FOUND: "§4§l该玩家不存在或未上线"
+
+  GUI_SELL_TITLE: "&1&l收购列表"
+  GUI_INCOMPATIBLE: "&4&l控制台无法调用该功能"
 
   SELL_INTERVAL_PREFIX: "&e&l当前收购间隔时间为 {interval} 小时"
   SELL_FINISH: "&a&l已收购完毕，你获得了 {acquired}"
@@ -62,44 +62,3 @@ zh_CN:
   CMD_ADD_ERROR_BY_EMPTY: "&4&l添加失败，因为你的手中没有物品（不支持副手检测）"
   CMD_DEL_ERROR_BY_EMPTY: "&4&l删除失败，因为不存在这个收购项"
   CMD_DEL_FINISH: "&a&l成功删除了一个收购项"
-
-# 英语
-# 注意！本插件不提供英文翻译！
-en_US:
-  PLUGIN_ENABLING: ""
-  PLUGIN_ENABLED: ""
-  PLUGIN_DISABLING: ""
-  PLUGIN_DISABLED: ""
-  PLUGIN_VAULT_HOOKED: ""
-  PLUGIN_NOT_FOUND_VAULT: ""
-  PLUGIN_NOT_COMPATIBLE_VAULT: ""
-  PLUGIN_PAPI_HOOKED: ""
-  PLUGIN_NOT_FOUND_PAPI: ""
-  LANG_VERSION_ERROR: ""
-  LANG_VERSION_INCOMPATIBLE: ""
-  LANG_LOCALE_ERROR: ""
-  LANG_LOCALE_INCOMPATIBLE: ""
-  LANG_ERROR: ""
-  CONFIG_VERSION_ERROR: ""
-  CONFIG_VERSION_INCOMPATIBLE: ""
-  CONFIG_LOCALE_ERROR: ""
-  CONFIG_LOCALE_INCOMPATIBLE: ""
-  CONFIG_ERROR: ""
-  GUI_SELL_TITLE: ""
-  GUI_INCOMPATIBLE: ""
-  GUI_SELL_PRODUCT_TITLE: ""
-  GUI_NOT_VIEW: ""
-  SELL_INTERVAL_PREFIX: ""
-  SELL_FINISH: ""
-  SELL_OVERFLOW: ""
-  SELL_WAITING: ""
-  SELL_DETAIL: ""
-  PRODUCT_DETAIL: ""
-  CMD_ARG_ERROR: ""
-  CMD_MAT_ERROR: ""
-  CMD_PERMISSION_DENIED: ""
-  CMD_ADD_FINISH: ""
-  CMD_ADD_ERROR_BY_EXIST: ""
-  CMD_ADD_ERROR_BY_EMPTY: ""
-  CMD_DEL_ERROR_BY_EMPTY: ""
-  CMD_DEL_FINISH: ""
