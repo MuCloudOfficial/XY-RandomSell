@@ -45,8 +45,6 @@ public class Messages {
 
     public static String CONFIG_VERSION_ERROR;
     public static String CONFIG_VERSION_INCOMPATIBLE;
-    public static String CONFIG_LOCALE_ERROR;
-    public static String CONFIG_LOCALE_INCOMPATIBLE;
     public static String CONFIG_ERROR;
 
 
@@ -57,7 +55,6 @@ public class Messages {
 
     public static String GUI_SELL_TITLE;
     public static String GUI_INCOMPATIBLE;
-    public static String GUI_NOT_VIEW;
 
     public static String SELL_INTERVAL_PREFIX;
     public static String SELL_FINISH;
@@ -117,11 +114,14 @@ public class Messages {
             PLUGIN_ENABLED = convert(fc.getString(Locale + ".PLUGIN_ENABLED"), null, null);
             PLUGIN_DISABLING = convert(fc.getString(Locale + ".PLUGIN_DISABLING"), null, null);
             PLUGIN_DISABLED = convert(fc.getString(Locale + ".PLUGIN_DISABLED"), null, null);
+            PLUGIN_VAULT_HOOKED = convert(fc.getString(Locale + ".PLUGIN_VAULT_HOOKED"), null, null);
+            PLUGIN_NOT_FOUND_VAULT = convert(fc.getString(Locale + ".PLUGIN_NOT_FOUND_VAULT"), null, null);
+            PLUGIN_NOT_COMPATIBLE_VAULT = convert(fc.getString(Locale + ".PLUGIN_NOT_COMPATIBLE_VAULT"), null, null);
+            PLUGIN_PAPI_HOOKED = convert(fc.getString(Locale + ".PLUGIN_PAPI_HOOKED"), null, null);
+            PLUGIN_NOT_FOUND_PAPI = convert(fc.getString(Locale + ".PLUGIN_NOT_FOUND_PAPI"), null, null);
 
             CONFIG_VERSION_ERROR = convert(fc.getString(Locale + ".CONFIG_VERSION_ERROR"), null, null);
             CONFIG_VERSION_INCOMPATIBLE = convert(fc.getString(Locale + ".CONFIG_VERSION_INCOMPATIBLE"), null, null);
-            CONFIG_LOCALE_ERROR = convert(fc.getString(Locale + ".CONFIG_LOCALE_ERROR"), null, null);
-            CONFIG_LOCALE_INCOMPATIBLE = convert(fc.getString(Locale + ".CONFIG_LOCALE_INCOMPATIBLE"), null, null);
             CONFIG_ERROR = convert(fc.getString(Locale + ".CONFIG_ERROR"), null, null);
 
             SELLREPO_REF_ERROR_BY_EMPTY = convert(fc.getString(Locale + "SELLREPO_REF_ERROR_BY_EMPTY"), null, null);
@@ -131,7 +131,6 @@ public class Messages {
 
             GUI_SELL_TITLE = convert(fc.getString(Locale + ".GUI_SELL_TITLE"), null, null);
             GUI_INCOMPATIBLE = convert(fc.getString(Locale + ".GUI_INCOMPATIBLE"), null, null);
-            GUI_NOT_VIEW = convert(fc.getString(Locale + ".GUI_NOT_VIEW"), null, null);
 
             SELL_INTERVAL_PREFIX = convert(fc.getString(Locale + ".SELL_INTERVAL_PREFIX"), null, null);
             SELL_FINISH = convert(fc.getString(Locale + ".SELL_FINISH"), null, null);

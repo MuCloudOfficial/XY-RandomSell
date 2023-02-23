@@ -1,0 +1,105 @@
+#======================================================================#
+#                          Made in Starry Sky.                         #
+#======================================================================#
+#                                                                      #
+#      XY-RandomSell 插件设置                                           #
+#      XY-RandomSell Configuration                                     #
+#                                             作者：Mu_Cloud            #
+#                                             Author: Mu_Cloud         #
+#                                                                      #
+#======================================================================#
+
+# 语言文件版本
+# ！！！若非特殊说明，请不要随意改动该设置！！！
+# ！！！对于无端改动该设置可能造成的设置丢失问题与作者无关，也不要提交至 ISSUE！！！
+Version: StarrySky_L1.1
+
+# 语言
+# 默认简体中文
+Locale: "zh_CN"
+
+# 简体中文
+# 除插件内部消息外其它语言项全局支持 PAPI
+# 全局支持 & 颜色符
+zh_CN:
+  PLUGIN_ENABLING: "&a&l正在启动"
+  PLUGIN_ENABLED: "&a&l已启动"
+  PLUGIN_DISABLING: "&a&l正在关闭"
+  PLUGIN_DISABLED: "&a&l已关闭"
+  PLUGIN_VAULT_HOOKED: "&a&l检测到 Vault"
+  PLUGIN_NOT_FOUND_VAULT: "&4&l未检测到 Vault，请检查服务器是否已安装 Vault"
+  PLUGIN_NOT_COMPATIBLE_VAULT: "&4&l已检测到 Vault，但服务器没有含经济系统插件以维持其工作，本次启动失败"
+  PLUGIN_PAPI_HOOKED: "&a&l检测到 PlaceholderAPI"
+  PLUGIN_NOT_FOUND_PAPI: "&6&l未检测到 PlaceholderAPI，变量支持将不可用"
+
+  CONFIG_VERSION_ERROR: "&4&l设置文件版本错误，已使用插件内部设置文件替换，原设置文件已备份"
+  CONFIG_VERSION_INCOMPATIBLE: "&4&l设置文件不兼容，已使用插件内部设置文件替换，原设置文件已备份"
+  CONFIG_ERROR: "&4&l设置项错误，已使用插件内部设置文件替换，原设置文件已备份"
+
+  GUI_SELL_TITLE: "&1&l收购列表"
+  GUI_INCOMPATIBLE: "&4&l控制台无法调用该功能"
+
+  SELLREPO_REF_ERROR_BY_EMPTY: "§4§l刷新失败，该玩家的收购可能已经处于等待刷新状态"
+  SELLREPO_REF_FINISH: "§a§l已刷新 {player} §a§l的收购"
+  SELLREPO_REF_ALL_FINISH: "§a§l已刷新所有玩家的收购"
+  PLAYER_NOT_FOUND: "§4§l该玩家不存在或未上线"
+
+  SELL_INTERVAL_PREFIX: "&e&l当前收购间隔时间为 {interval} 小时"
+  SELL_FINISH: "&a&l已收购完毕，你获得了 {acquired}"
+  SELL_OVERFLOW: "&4&l收购的数量过多"
+  SELL_WAITING: "&6&l输入你要售出的个数，输入 all 可以全部售出"
+
+  PRODUCT_LIST_PREFIX: "&6&l当前收购项列表: "
+  PRODUCT_DETAIL:
+    - "当前收购量: {amount}"
+    - "收购价: {price}"
+
+  CMD_ARG_ERROR: "&4&l指令参数错误"
+  CMD_MAT_ERROR: "&4&l物品参数错误，请检查"
+  CMD_PERMISSION_DENIED: "&4&l你没有权限执行此操作"
+  CMD_ADD_FINISH: "&a&l成功添加了一个收购项"
+  CMD_ADD_ERROR_BY_EXIST: "&4&l添加失败，因为已经存在该收购项"
+  CMD_ADD_ERROR_BY_EMPTY: "&4&l添加失败，因为你的手中没有物品（不支持副手检测）"
+  CMD_DEL_ERROR_BY_EMPTY: "&4&l删除失败，因为不存在这个收购项"
+  CMD_DEL_FINISH: "&a&l成功删除了一个收购项"
+
+# 英语
+# 注意！本插件不提供英文翻译！
+en_US:
+  PLUGIN_ENABLING: ""
+  PLUGIN_ENABLED: ""
+  PLUGIN_DISABLING: ""
+  PLUGIN_DISABLED: ""
+  PLUGIN_VAULT_HOOKED: ""
+  PLUGIN_NOT_FOUND_VAULT: ""
+  PLUGIN_NOT_COMPATIBLE_VAULT: ""
+  PLUGIN_PAPI_HOOKED: ""
+  PLUGIN_NOT_FOUND_PAPI: ""
+  LANG_VERSION_ERROR: ""
+  LANG_VERSION_INCOMPATIBLE: ""
+  LANG_LOCALE_ERROR: ""
+  LANG_LOCALE_INCOMPATIBLE: ""
+  LANG_ERROR: ""
+  CONFIG_VERSION_ERROR: ""
+  CONFIG_VERSION_INCOMPATIBLE: ""
+  CONFIG_LOCALE_ERROR: ""
+  CONFIG_LOCALE_INCOMPATIBLE: ""
+  CONFIG_ERROR: ""
+  GUI_SELL_TITLE: ""
+  GUI_INCOMPATIBLE: ""
+  GUI_SELL_PRODUCT_TITLE: ""
+  GUI_NOT_VIEW: ""
+  SELL_INTERVAL_PREFIX: ""
+  SELL_FINISH: ""
+  SELL_OVERFLOW: ""
+  SELL_WAITING: ""
+  SELL_DETAIL: ""
+  PRODUCT_DETAIL: ""
+  CMD_ARG_ERROR: ""
+  CMD_MAT_ERROR: ""
+  CMD_PERMISSION_DENIED: ""
+  CMD_ADD_FINISH: ""
+  CMD_ADD_ERROR_BY_EXIST: ""
+  CMD_ADD_ERROR_BY_EMPTY: ""
+  CMD_DEL_ERROR_BY_EMPTY: ""
+  CMD_DEL_FINISH: ""
