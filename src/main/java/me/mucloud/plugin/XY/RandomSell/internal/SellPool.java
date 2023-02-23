@@ -47,7 +47,26 @@ public class SellPool {
         return false;
     }
 
+    public void setViewStatus(Player p, boolean isView){
+        for(SellRepo sr : Pool){
+            if(sr.equals(p)){
+                sr.setView(false);
+            }
+        }
+    }
+
+    public void delProductForAll(Product p){
+        Pool.forEach(l -> {
+            l.delProduct(p);
+        });
+    }
+
     public void clear(){
+        Pool.forEach(l -> {
+            if(l.isView()){
+                l.cancelView();
+            }
+        });
         Pool.clear();
     }
 

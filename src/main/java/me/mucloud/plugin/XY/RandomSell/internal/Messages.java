@@ -23,7 +23,7 @@ public class Messages {
     private static String LangVersion;
     private static final List<String> LangVersionCompatibility
             = List.of(
-                    "StarrySky_L1.0"
+                    "StarrySky_L1.1"
             );
     private static String Locale;
     private static final List<String> LocaleCompatibility
@@ -43,27 +43,28 @@ public class Messages {
     public static String PLUGIN_PAPI_HOOKED;
     public static String PLUGIN_NOT_FOUND_PAPI;
 
-    public static String LANG_VERSION_ERROR;
-    public static String LANG_VERSION_INCOMPATIBLE;
-    public static String LANG_LOCALE_ERROR;
-    public static String LANG_LOCALE_INCOMPATIBLE;
-    public static String LANG_ERROR;
-
     public static String CONFIG_VERSION_ERROR;
     public static String CONFIG_VERSION_INCOMPATIBLE;
     public static String CONFIG_LOCALE_ERROR;
     public static String CONFIG_LOCALE_INCOMPATIBLE;
     public static String CONFIG_ERROR;
 
+
+    public static String SELLREPO_REF_ERROR_BY_EMPTY;
+    public static String SELLREPO_REF_FINISH;
+    public static String SELLREPO_REF_ALL_FINISH;
+    public static String PLAYER_NOT_FOUND;
+
     public static String GUI_SELL_TITLE;
     public static String GUI_INCOMPATIBLE;
-    public static String GUI_SELL_PRODUCT_TITLE;
     public static String GUI_NOT_VIEW;
 
     public static String SELL_INTERVAL_PREFIX;
     public static String SELL_FINISH;
     public static String SELL_OVERFLOW;
-    public static List<String> SELL_DETAIL;
+    public static String SELL_WAITING;
+
+    public static String PRODUCT_LIST_PREFIX;
     public static List<String> PRODUCT_DETAIL;
 
     public static String CMD_ARG_ERROR;
@@ -117,27 +118,27 @@ public class Messages {
             PLUGIN_DISABLING = convert(fc.getString(Locale + ".PLUGIN_DISABLING"), null, null);
             PLUGIN_DISABLED = convert(fc.getString(Locale + ".PLUGIN_DISABLED"), null, null);
 
-            LANG_VERSION_ERROR = convert(fc.getString(Locale + ".LANG_VERSION_ERROR"), null, null);
-            LANG_VERSION_INCOMPATIBLE = convert(fc.getString(Locale + ".LANG_VERSION_INCOMPATIBLE"), null, null);
-            LANG_LOCALE_ERROR = convert(fc.getString(Locale + ".LANG_LOCALE_ERROR"), null, null);
-            LANG_LOCALE_INCOMPATIBLE = convert(fc.getString(Locale + ".LANG_LOCALE_INCOMPATIBLE"), null, null);
-            LANG_ERROR = convert(fc.getString(Locale + ".LANG_ERROR"), null, null);
-
             CONFIG_VERSION_ERROR = convert(fc.getString(Locale + ".CONFIG_VERSION_ERROR"), null, null);
             CONFIG_VERSION_INCOMPATIBLE = convert(fc.getString(Locale + ".CONFIG_VERSION_INCOMPATIBLE"), null, null);
             CONFIG_LOCALE_ERROR = convert(fc.getString(Locale + ".CONFIG_LOCALE_ERROR"), null, null);
             CONFIG_LOCALE_INCOMPATIBLE = convert(fc.getString(Locale + ".CONFIG_LOCALE_INCOMPATIBLE"), null, null);
             CONFIG_ERROR = convert(fc.getString(Locale + ".CONFIG_ERROR"), null, null);
 
+            SELLREPO_REF_ERROR_BY_EMPTY = convert(fc.getString(Locale + "SELLREPO_REF_ERROR_BY_EMPTY"), null, null);
+            SELLREPO_REF_FINISH = convert(fc.getString(Locale + "SELLREPO_REF_FINISH"), null, null);
+            SELLREPO_REF_ALL_FINISH = convert(fc.getString(Locale + ".SELLREPO_REF_ALL_FINISH"), null, null);
+            PLAYER_NOT_FOUND = convert(fc.getString(Locale + "PLAYER_NOT_FOUND"), null, null);
+
             GUI_SELL_TITLE = convert(fc.getString(Locale + ".GUI_SELL_TITLE"), null, null);
             GUI_INCOMPATIBLE = convert(fc.getString(Locale + ".GUI_INCOMPATIBLE"), null, null);
-            GUI_SELL_PRODUCT_TITLE = convert(fc.getString(Locale + ".GUI_SELL_PRODUCT_TITLE"), null, null);
             GUI_NOT_VIEW = convert(fc.getString(Locale + ".GUI_NOT_VIEW"), null, null);
 
             SELL_INTERVAL_PREFIX = convert(fc.getString(Locale + ".SELL_INTERVAL_PREFIX"), null, null);
             SELL_FINISH = convert(fc.getString(Locale + ".SELL_FINISH"), null, null);
             SELL_OVERFLOW = convert(fc.getString(Locale + ".SELL_OVERFLOW"), null, null);
-            SELL_DETAIL = convert(fc.getStringList(Locale + ".SELL_DETAIL"), null);
+            SELL_WAITING = convert(fc.getString(Locale + ".SELL_WAITING"), null, null);
+
+            PRODUCT_LIST_PREFIX = convert(fc.getString(Locale + ".PRODUCT_LIST_PREFIX"),null, null);
             PRODUCT_DETAIL = convert(fc.getStringList(Locale + ".PRODUCT_DETAIL"), null);
 
             CMD_ARG_ERROR = convert(fc.getString(Locale + ".CMD_ARG_ERROR"), null, null);

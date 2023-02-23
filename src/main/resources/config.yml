@@ -14,7 +14,7 @@ General:
   # 设置文件版本
   # ！！！若非特殊说明，请不要随意改动该设置！！！
   # ！！！对于无端改动该设置可能造成的设置丢失问题与作者无关，也不要提交至 ISSUE！！！
-  Version: StarrySky_C1.0
+  Version: StarrySky_C1.1
 
   # 是否检查更新
   # 除非该插件长时间未收到更新，或该插件在检查更新时总是报关于 IOException 错误，否则建议打开该选项
@@ -31,7 +31,7 @@ Sell:
   # 设置玩家单次随机的收购项目数
   # ！！！注意，列出的随机项目总数必须大于该数值，否则可能会产生错误！！！
   # 默认 7
-  RandomSize: 7
+  RandomSize: 1
 
   # 设置随机收购间隔（单位：时）
   # 默认 1
@@ -46,4 +46,4 @@ Sell:
   # Material表: https://hub.spigotmc.org/javadocs/spigot/org/bukkit/Material.html，建议配合 MC WIKI 使用
   # 格式必须为 "[数字ID],[Material名],[收购数量],[收购价格]", 收购价格支持小数
   Products:
-    - WOOL,10,0.5
+    - 1,WOOL,10,0.5

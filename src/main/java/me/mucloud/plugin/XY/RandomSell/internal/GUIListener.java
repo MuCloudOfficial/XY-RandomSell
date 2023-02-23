@@ -7,12 +7,32 @@ import org.bukkit.event.Listener;
 import org.bukkit.event.inventory.InventoryClickEvent;
 import org.bukkit.event.inventory.InventoryCloseEvent;
 import org.bukkit.event.player.AsyncPlayerChatEvent;
+import org.bukkit.inventory.meta.ItemMeta;
 
 public class GUIListener implements Listener {
 
     @EventHandler public void onListen(InventoryClickEvent ice){
         Player p = (Player)ice.getWhoClicked();
         if(Main.INSTANCE.getSP().isView(p)){
+            SellRepo sr = Main.INSTANCE.getSP().getSellRepo(p);
+            int i = ice.getRawSlot();
+            if(i == 50 && !sr.isNoPrevious()){
+                sr.previousPage();
+            }
+            if(i == 52 && !sr.isNoNext()){
+                sr.nextPage();
+            }
+            if(i == 51){
+                sr.cancelView();
+            }
+
+            if(!sr.clickIsBorder(i)){
+                ItemMeta im = ice.getCurrentItem().getItemMeta();
+                String[] rawInf = im.getDisplayName().split(":");
+                sr.setWaitingProductID(Integer.parseInt(rawInf[rawInf.length -1].trim()));
+                sr.setWaitingSell(true);
+                p.sendMessage(Messages.requestPlaceholder(p, Messages.SELL_WAITING));
+            }
 
             ice.setCancelled(true);
         }
@@ -20,10 +40,19 @@ public class GUIListener implements Listener {
 
     @EventHandler public void onListen(InventoryCloseEvent ice){
         Player p = (Player)ice.getPlayer();
+        Main.INSTANCE.getSP().setViewStatus(p, false);
     }
 
     @EventHandler public void onListen(AsyncPlayerChatEvent apce){
         Player p = apce.getPlayer();
+        String message = apce.getMessage();
+
+        SellRepo sr = Main.INSTANCE.getSP().getSellRepo(p);
+        if(sr.isWaitingSell()){
+            if(message.matches("[0-9]+")){
+                sr.sell(sr.getWaitingProductID(), Integer.parseInt(message));
+            }
+        }
     }
 
 }

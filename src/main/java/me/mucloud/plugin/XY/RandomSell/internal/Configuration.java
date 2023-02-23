@@ -25,7 +25,8 @@ public class Configuration {
     private static String ConfigVersion;
     private static List<String> ConfigVersionCompatible =
             List.of(
-                    "StarrySky_C1.0"
+                    "StarrySky_C1.0",
+                    "StarrySky_C1.1"
             );
 
     private static int Sell_RandomSize;
@@ -130,6 +131,10 @@ public class Configuration {
 
     public String getConfigVersion() {
         return ConfigVersion;
+    }
+
+    public File getConfigFile(){
+        return ConfigFile;
     }
 
     public int getSell_RandomSize() {

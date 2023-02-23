@@ -14,11 +14,19 @@ import java.util.List;
 
 public class SellRepo {
 
+    private final List<Integer> BorderIndex = List.of(
+            0,1,2,3,4,5,6,7,8,
+            9,17,18,26,27,35,36,44,
+            45,46,47,48,49,50,51,52,53
+    );
     private final List<Product> Products;
     private final Player Target;
     private int Page;
     private boolean View;
     private boolean WaitingSell;
+    private int WaitingProductID;
+    private boolean noNext;
+    private boolean noPrevious;
 
     public SellRepo(Player player, List<Product> initProducts){
         Target = player;
@@ -39,22 +47,15 @@ public class SellRepo {
                 Main.INSTANCE.getConfiguration().getSell_RandomSize(),
                 Messages.requestPlaceholder(Target, Messages.GUI_SELL_TITLE));
 
-        boolean noNext = false;
-        boolean noPrevious = false;
 
-        List<Integer> borderIndex = List.of(
-                0,1,2,3,4,5,6,7,8,
-                9,17,18,26,27,35,36,44,
-                45,46,47,48,49,50,51,52,53
-        );
-        List<ItemStack> list = new ArrayList<>();
+        List<ItemStack> list = new ArrayList<>(54);
         for(int i = Page *28; i < (Page -1) *28; i++){
             if(i == Products.size()){
                 noNext = true;
                 break;
             }
             for(int ii = 0; ii < 54; ii++){
-                if(borderIndex.contains(ii)){
+                if(BorderIndex.contains(ii)){
                     continue;
                 }
                 list.add(ii, Products.get(i).toIcon(Target));
@@ -82,7 +83,7 @@ public class SellRepo {
 
         ItemStack cancel = new ItemStack(Material.AIR);
         ItemMeta im_cancel = cancel.getItemMeta();
-        im_cancel.setDisplayName("§b§l下一页");
+        im_cancel.setDisplayName("§e§l关闭收购");
         cancel.setItemMeta(im_cancel);
         inv.setItem(52, cancel);
 
@@ -97,21 +98,93 @@ public class SellRepo {
         return Page;
     }
 
-    public void setPage(int page){
-        Page = page;
-        toInv();
-    }
-
     public boolean equals(Player p) {
         return Target.equals(p);
     }
 
-    public Product getProduct(int index){
-        return Products.get(index);
-    }
-
     public boolean isView(){
         return View;
+    }
+
+    public void setView(boolean view) {
+        View = view;
+    }
+
+    public boolean isWaitingSell() {
+        return WaitingSell;
+    }
+
+    public void setWaitingSell(boolean waitingSell) {
+        WaitingSell = waitingSell;
+        if(WaitingSell){
+            Target.closeInventory();
+        }else{
+            toInv();
+        }
+    }
+
+    public int getWaitingProductID(){
+        return WaitingProductID;
+    }
+
+    public void setWaitingProductID(int id){
+        for(Product p : Products){
+            if(p.equals(id)){
+                WaitingProductID = id;
+            }
+        }
+    }
+
+    public void sell(int id, int amount){
+        for(Product p : Products){
+            p.equals(id);
+            p.sell(Target, amount);
+            Target.closeInventory();
+            WaitingSell = false;
+        }
+    }
+
+    public boolean isNoNext() {
+        return noNext;
+    }
+
+    public boolean isNoPrevious(){
+        return noPrevious;
+    }
+
+    public void nextPage(){
+        Page++;
+        Target.closeInventory();
+        toInv();
+    }
+
+    public void previousPage(){
+        Page--;
+        Target.closeInventory();
+        toInv();
+    }
+
+    public void cancelView(){
+        Page = 0;
+        noNext = false;
+        noPrevious = false;
+        View = false;
+        WaitingSell = false;
+        Target.closeInventory();
+    }
+
+    public boolean clickIsBorder(int indexInView){
+        return BorderIndex.contains(indexInView);
+    }
+
+    public void delProduct(Product p){
+        Products.forEach(l -> {
+            if(l.equals(p)){
+                Products.remove(l);
+                Target.closeInventory();
+                toInv();
+            }
+        });
     }
 
 }

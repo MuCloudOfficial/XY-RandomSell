@@ -6,8 +6,12 @@ import me.mucloud.plugin.XY.RandomSell.internal.Product;
 import org.bukkit.Material;
 import org.bukkit.command.CommandSender;
 import org.bukkit.command.ConsoleCommandSender;
+import org.bukkit.configuration.InvalidConfigurationException;
+import org.bukkit.configuration.file.FileConfiguration;
+import org.bukkit.configuration.file.YamlConfiguration;
 import org.bukkit.entity.Player;
 
+import java.io.IOException;
 import java.util.List;
 
 /**
@@ -27,28 +31,39 @@ public class add {
 
     public void execute(){
         if(Sender instanceof ConsoleCommandSender){
-            if(Args.size() != 4){
+            if(Args.size() != 3){
                 Sender.sendMessage(Messages.CMD_ARG_ERROR);
                 return;
             }
-            Material m = Material.matchMaterial(Args.get(1));
+            Material m = Material.matchMaterial(Args.get(0));
             if(m == null){
                 Sender.sendMessage(Messages.CMD_MAT_ERROR);
                 return;
             }
-            Product p = new Product(m, Integer.parseInt(Args.get(2)), Double.parseDouble(Args.get(3)));
-            if(Main.INSTANCE.getPP().contains(p)){
+            Product p;
+            if((p = Main.INSTANCE.getPP().addProduct(m, Integer.parseInt(Args.get(0)), Double.parseDouble(Args.get(1)))) == null){
                 Sender.sendMessage(Messages.CMD_ADD_ERROR_BY_EXIST);
                 return;
             }
-            Main.INSTANCE.getPP().addProduct(p);
+
+            FileConfiguration fc = new YamlConfiguration();
+            try {
+                fc.load(Main.INSTANCE.getConfiguration().getConfigFile());
+                List<String> ol = fc.getStringList("Sell.Products");
+                ol.add(p.toConfig());
+
+                fc.set("Sell.Products", ol);
+            } catch (IOException | InvalidConfigurationException e) {
+                throw new RuntimeException(e);
+            }
+
             Sender.sendMessage(Messages.CMD_ADD_FINISH);
         }else if (Sender instanceof Player){
             if(Sender.hasPermission("xyrs.admin")){
                 Sender.sendMessage(Messages.CMD_PERMISSION_DENIED);
                 return;
             }
-            if(Args.size() != 3){
+            if(Args.size() != 2){
                 Sender.sendMessage(Messages.CMD_ARG_ERROR);
                 return;
             }
@@ -57,12 +72,24 @@ public class add {
                 Sender.sendMessage(Messages.CMD_ADD_ERROR_BY_EMPTY);
                 return;
             }
-            Product p = new Product(m, Integer.parseInt(Args.get(0)), Double.parseDouble(Args.get(1)));
-            if(Main.INSTANCE.getPP().contains(p)){
+
+            Product p;
+            if((p = Main.INSTANCE.getPP().addProduct(m, Integer.parseInt(Args.get(0)), Double.parseDouble(Args.get(1)))) == null){
                 Sender.sendMessage(Messages.CMD_ADD_ERROR_BY_EXIST);
                 return;
             }
-            Main.INSTANCE.getPP().addProduct(p);
+
+            FileConfiguration fc = new YamlConfiguration();
+            try {
+                fc.load(Main.INSTANCE.getConfiguration().getConfigFile());
+                List<String> ol = fc.getStringList("Sell.Products");
+                ol.add(p.toConfig());
+
+                fc.set("Sell.Products", ol);
+            } catch (IOException | InvalidConfigurationException e) {
+                throw new RuntimeException(e);
+            }
+
             Sender.sendMessage(Messages.CMD_ADD_FINISH);
         }
     }

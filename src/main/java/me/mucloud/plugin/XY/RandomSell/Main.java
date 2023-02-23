@@ -9,6 +9,8 @@ import org.bukkit.event.HandlerList;
 import org.bukkit.plugin.RegisteredServiceProvider;
 import org.bukkit.plugin.java.JavaPlugin;
 
+import java.util.Objects;
+
 public class Main extends JavaPlugin {
 
     public static final String PREFIX = "§a§lXY7§-§6RandomSell";
@@ -41,7 +43,9 @@ public class Main extends JavaPlugin {
     }
 
     @Override public void onDisable() {
-
+        if(SP != null) SP.clear();
+        if(PP != null) PP.clear();
+        Objects.requireNonNull(getCommand("xyrs")).setExecutor(null);
         HandlerList.unregisterAll(INSTANCE);
     }
 
