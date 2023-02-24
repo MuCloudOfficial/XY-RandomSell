@@ -27,7 +27,7 @@ public class add {
 
     public add(CommandSender sender, String[] args){
         Sender = sender;
-        Args = args.length == 1 ? Collections.emptyList() : List.of(args).subList(1, args.length -1);
+        Args = args.length == 1 ? Collections.emptyList() : List.of(args).subList(1, args.length);
     }
 
     public void execute(){
