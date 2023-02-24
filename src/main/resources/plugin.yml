@@ -9,7 +9,7 @@ api-version: 1.13
 name: XY-RandomSell
 versionCN: 星空
 version: StarrySky
-internalVersion: 1.1029
+internalVersion: 1.1030
 authors: [ "Mu_Cloud" ]
 website: https://github.com/MuCloudOfficial/XY-RandomSell
 softdepend: [ "Vault" , "PlaceholderAPI" ]

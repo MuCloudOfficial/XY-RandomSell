@@ -46,4 +46,5 @@ Sell:
   # Material表: https://hub.spigotmc.org/javadocs/spigot/org/bukkit/Material.html，建议配合 MC WIKI 使用
   # 格式必须为 "[数字ID],[Material名],[收购数量],[收购价格]", 收购价格支持小数
   Products:
-    - 1,WOOL,10,0.5
+    - 1,WHITE_WOOL,10,0.5
+    - 2,GRAY_WOOL,10,0.5

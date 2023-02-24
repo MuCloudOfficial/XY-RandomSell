@@ -3,10 +3,10 @@ package me.mucloud.plugin.XY.RandomSell.command;
 import me.mucloud.plugin.XY.RandomSell.Main;
 import me.mucloud.plugin.XY.RandomSell.internal.Messages;
 import org.bukkit.Bukkit;
-import org.bukkit.OfflinePlayer;
 import org.bukkit.command.CommandSender;
 import org.bukkit.entity.Player;
 
+import java.util.Collections;
 import java.util.List;
 
 public class refresh {
@@ -16,7 +16,7 @@ public class refresh {
 
     public refresh(CommandSender sender, String[] args){
         Sender = sender;
-        Args = List.of(args).subList(1, args.length -1);
+        Args = args.length == 1 ? Collections.emptyList() : List.of(args).subList(1, args.length -1);
     }
 
     public void execute(){

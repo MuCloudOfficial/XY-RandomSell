@@ -21,24 +21,30 @@ public class ProductPool {
 
     public void regFromFile(){
         for (String s : C.getRAW_Product_LIST()) {
+            MainConsole.sendMessage(s);
+            MainConsole.sendMessage(Arrays.toString(s.split(",")));
             if(s.split(",").length != 4){
-                MainConsole.warn("当前收购项条目错误" + s + "   已跳过");
+                MainConsole.warn("当前收购项条目错误 " + s + " ,已跳过");
                 continue;
             }
+            MainConsole.sendMessage("通过了Stage1");
             String[] rawInf = s.split(",");
             int id = Integer.parseInt(rawInf[0]);
             if(contains(id)){
-                MainConsole.warn("当前收购项条目错误" + s + "    已跳过");
+                MainConsole.warn("当前收购项条目错误 " + s + " ,已跳过");
                 continue;
             }
+            MainConsole.sendMessage("通过了Stage2");
             Material type;
             if((type = Material.matchMaterial(rawInf[1])) == null){
-                MainConsole.warn("当前收购项条目错误" + s + "    已跳过");
+                MainConsole.warn("当前收购项条目错误 " + s + " ,已跳过");
                 continue;
             }
+            MainConsole.sendMessage("通过了Stage3");
             int amount = Integer.parseInt(rawInf[2]);
             double price = Double.parseDouble(rawInf[3]);
 
+            MainConsole.sendMessage("通过了Stage4");
             Pool.add(new Product(id, type, amount, price));
         }
         MainConsole.sendMessage("§a§l加载了 " + Pool.size() + " 个商品");

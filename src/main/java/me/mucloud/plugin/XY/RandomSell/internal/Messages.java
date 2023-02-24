@@ -55,6 +55,7 @@ public class Messages {
 
     public static String GUI_SELL_TITLE;
     public static String GUI_INCOMPATIBLE;
+    public static String GUI_NOT_VIEW;
 
     public static String SELL_INTERVAL_PREFIX;
     public static String SELL_FINISH;
@@ -131,6 +132,7 @@ public class Messages {
 
             GUI_SELL_TITLE = convert(fc.getString(Locale + ".GUI_SELL_TITLE"), null, null);
             GUI_INCOMPATIBLE = convert(fc.getString(Locale + ".GUI_INCOMPATIBLE"), null, null);
+            GUI_NOT_VIEW = convert(fc.getString(Locale + ".GUI_NOT_VIEW"), null, null);
 
             SELL_INTERVAL_PREFIX = convert(fc.getString(Locale + ".SELL_INTERVAL_PREFIX"), null, null);
             SELL_FINISH = convert(fc.getString(Locale + ".SELL_FINISH"), null, null);

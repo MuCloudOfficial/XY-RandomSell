@@ -4,6 +4,7 @@ import me.mucloud.plugin.XY.RandomSell.Main;
 import me.mucloud.plugin.XY.RandomSell.internal.Messages;
 import org.bukkit.command.CommandSender;
 
+import java.util.Collections;
 import java.util.List;
 
 /**
@@ -16,7 +17,7 @@ public class del {
 
     public del(CommandSender sender, String[] args){
         Sender = sender;
-        Args = List.of(args).subList(1, args.length -1);
+        Args = args.length == 1 ? Collections.emptyList() : List.of(args).subList(1, args.length -1);
     }
 
     public void execute(){

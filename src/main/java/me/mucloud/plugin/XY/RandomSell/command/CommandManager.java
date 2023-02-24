@@ -39,13 +39,13 @@ public class CommandManager implements CommandExecutor, TabCompleter {
             if(ss.length == 0){
                 sendInfo(sender);
             }else{
-                switch(ss[1].toLowerCase()){
+                switch(ss[0].toLowerCase()){
                     case "info": sendInfo(sender); break;
                     case "gui": new gui(sender).execute(); break;
                     case "add": new add(sender, ss).execute(); break;
                     case "del": new del(sender, ss); break;
-                    case "list": new list(sender); break;
-                    case "refresh": new refresh(sender, ss); break;
+                    case "list": new list(sender).execute(); break;
+                    case "refresh": new refresh(sender, ss).execute(); break;
                     case "checkversion": new checkVersion(); break;
                 }
             }

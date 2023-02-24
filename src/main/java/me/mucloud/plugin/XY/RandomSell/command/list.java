@@ -14,7 +14,7 @@ public class list {
     }
 
     public void execute(){
-        Sender.sendMessage(Messages.requestPlaceholder((Player) Sender, Messages.PRODUCT_LIST_PREFIX));
+        Sender.sendMessage(Messages.PRODUCT_LIST_PREFIX);
         Main.INSTANCE.getPP().getList().forEach(Sender::sendMessage);
     }
 

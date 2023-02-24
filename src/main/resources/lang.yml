@@ -43,6 +43,7 @@ zh_CN:
 
   GUI_SELL_TITLE: "&1&l收购列表"
   GUI_INCOMPATIBLE: "&4&l控制台无法调用该功能"
+  GUI_NOT_VIEW: "&4&l控制台无法使用该命令"
 
   SELL_INTERVAL_PREFIX: "&e&l当前收购间隔时间为 {interval} 小时"
   SELL_FINISH: "&a&l已收购完毕，你获得了 {acquired}"
