@@ -55,10 +55,11 @@ public class ProductPool {
             return null;
         }
         List<Product> list = new ArrayList<>();
-        for(int i = 0; i < C.getSell_RandomSize(); i++){
-            int random = new Random().nextInt(Pool.size());
+        for(int i = 1; i < C.getSell_RandomSize();){
+            int random = new Random().nextInt(getMaxID() +1);
             if(!list.contains(Pool.get(random))){
                 list.add(Pool.get(random));
+                i++;
             }
         }
 
@@ -84,17 +85,10 @@ public class ProductPool {
     }
 
     public Product addProduct(Material m, int amount, double price){
-        for(int i = 0;; i++){
-            if(!contains(i)){
-                Product p = new Product(i, m, amount, price);
-                if(!contains(p)){
-                    Pool.add(p);
-                    return p;
-                }else{
-                    return null;
-                }
-            }
-        }
+        int i = getMaxID() +1;
+        Product p = new Product(i, m, amount, price);
+        Pool.add(p);
+        return p;
     }
 
     public void delProduct(int id){
@@ -144,4 +138,13 @@ public class ProductPool {
         return list;
     }
 
+    public int getMaxID(){
+        int result = 0;
+        for(Product p : Pool){
+            if(p.getID() > result){
+                result = p.getID();
+            }
+        }
+        return result;
+    }
 }

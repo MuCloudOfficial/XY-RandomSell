@@ -11,7 +11,6 @@ import org.bukkit.scheduler.BukkitRunnable;
 
 import java.util.ArrayList;
 import java.util.List;
-
 public class SellRepo {
 
     private final List<Integer> BorderIndex = List.of(
@@ -19,6 +18,8 @@ public class SellRepo {
             9,17,18,26,27,35,36,44,
             45,46,47,48,49,50,51,52,53
     );
+
+    private static ItemStack BorderFill;
     private final List<Product> Products;
     private final Player Target;
     private int Page;
@@ -43,49 +44,67 @@ public class SellRepo {
     }
 
     public void toInv(){
+
+        // debug
+        MainConsole.sendMessage(BorderIndex.toString());
+
+        // 定义边框，INV初始
+        BorderFill = new ItemStack(Material.GRAY_STAINED_GLASS_PANE);
         Inventory inv = Bukkit.createInventory(null,
-                Main.INSTANCE.getConfiguration().getSell_RandomSize(),
+                54,
                 Messages.requestPlaceholder(Target, Messages.GUI_SELL_TITLE));
 
-
+        // 定义初始框架和内容
         List<ItemStack> list = new ArrayList<>(54);
+        for(int i = 0; i < 54; i++){
+            list.add(i, new ItemStack(Material.AIR));
+        }
+
+        // 安装外围边框
+        for(Integer i : BorderIndex){
+            list.set(i, BorderFill);
+        }
+
+        // 定义内容
         for(int i = Page *28; i < (Page -1) *28; i++){
             if(i == Products.size()){
                 noNext = true;
                 break;
             }
             for(int ii = 0; ii < 54; ii++){
-                if(BorderIndex.contains(ii)){
+                if(BorderIndex.contains(ii) || list.get(ii).getType() != Material.AIR){
                     continue;
                 }
-                list.add(ii, Products.get(i).toIcon(Target));
+                list.set(ii, Products.get(i).toIcon(Target));
             }
         }
+
+        // 定义翻页
         if(Page == 0){
             noPrevious = true;
         }
 
         if(!noPrevious){
-            ItemStack previous = new ItemStack(Material.AIR);
+            ItemStack previous = BorderFill.clone();
             ItemMeta im_previous = previous.getItemMeta();
             im_previous.setDisplayName("§b§l上一页");
             previous.setItemMeta(im_previous);
-            inv.setItem(53, previous);
+            list.set(53, previous);
         }
 
         if(!noNext){
-            ItemStack next = new ItemStack(Material.AIR);
+            ItemStack next = BorderFill.clone();
             ItemMeta im_next = next.getItemMeta();
             im_next.setDisplayName("§b§l下一页");
             next.setItemMeta(im_next);
-            inv.setItem(51, next);
+            list.set(51, next);
         }
 
-        ItemStack cancel = new ItemStack(Material.AIR);
+        ItemStack cancel = BorderFill.clone();
         ItemMeta im_cancel = cancel.getItemMeta();
         im_cancel.setDisplayName("§e§l关闭收购");
         cancel.setItemMeta(im_cancel);
-        inv.setItem(52, cancel);
+        list.set(52, cancel);
 
         inv.setContents(list.toArray(new ItemStack[0]));
 

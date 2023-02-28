@@ -9,17 +9,17 @@ api-version: 1.13
 name: XY-RandomSell
 versionCN: 星空
 version: StarrySky
-internalVersion: 1.1030
+internalVersion: 1.1031
 authors: [ "Mu_Cloud" ]
 website: https://github.com/MuCloudOfficial/XY-RandomSell
 softdepend: [ "Vault" , "PlaceholderAPI" ]
 #===================================================#
-newVersionDetail: [ "最新版本细节概述" ]
+newVersionDetail: [ "新版本概述:" ]
 #===================================================#
 commands:
   xyrs:
     description: The XY-RandomSell Main Command.
-    usage: /mkes [args...]
+    usage: /xyrs [args...]
 #===================================================#
 permissions:
   xyrs.admin:

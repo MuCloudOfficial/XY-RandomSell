@@ -12,7 +12,7 @@ public final class MainConsole {
     }
 
     public static void sendMessage(String message){
-        CCS.sendMessage(preProcess(message));
+        CCS.sendMessage(preProcess(Messages.convert(message, null, null)));
     }
 
     public static void warn(String messageWithoutColorChar){

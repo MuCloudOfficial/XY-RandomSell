@@ -46,7 +46,7 @@ public class CommandManager implements CommandExecutor, TabCompleter {
                     case "del": new del(sender, ss).execute(); break;
                     case "list": new list(sender).execute(); break;
                     case "refresh": new refresh(sender, ss).execute(); break;
-                    case "checkversion": new checkVersion(); break;
+                    case "checkversion": new checkVersion(sender).execute(); break;
                 }
             }
         }

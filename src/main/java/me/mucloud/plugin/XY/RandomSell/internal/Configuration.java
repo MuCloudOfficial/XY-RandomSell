@@ -19,7 +19,7 @@ public class Configuration {
     private final File ConfigFolder;
     private final File ConfigFile;
     private static String Version;
-    private static String InternalVersion;
+    private static double InternalVersion;
     private static String Authors;
     private static String Website;
     private static String ConfigVersion;
@@ -58,7 +58,7 @@ public class Configuration {
             Yaml y = new Yaml();
             Map<String, Object> map = y.loadAs(Main.INSTANCE.getResource("plugin.yml"), HashMap.class);
             Version = map.get("versionCN").toString();
-            InternalVersion = map.get("internalVersion").toString();
+            InternalVersion = Double.parseDouble(map.get("internalVersion").toString());
             String authorString = map.get("authors").toString();
             Authors = authorString.substring(1, authorString.length() - 1).replace(",", " ");
             Website = map.get("website").toString();
@@ -145,7 +145,7 @@ public class Configuration {
         return CHECK_UPDATE;
     }
 
-    public String getInternalVersion() {
+    public double getInternalVersion() {
         return InternalVersion;
     }
 

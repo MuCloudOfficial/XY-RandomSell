@@ -31,7 +31,7 @@ public class SellPool {
 
     public boolean isView(Player p){
         for(SellRepo sr : Pool){
-            if(sr.equals(p)){
+            if(sr.equals(p) && sr.isView()){
                 return true;
             }
         }
