@@ -30,7 +30,7 @@ public class Main extends JavaPlugin {
         Messages.loadMessage(INSTANCE);
         requestHookVault();
         requestHookPAPI();
-        MainConsole.sendMessage("§b§lMADE IN STARRY SKY.");
+        MainConsole.sendMessage("&b&lMADE IN STARRY SKY.");
         MainConsole.sendMessage(Messages.PLUGIN_ENABLING);
         C = new Configuration(this);
         C.initialize();
@@ -40,6 +40,9 @@ public class Main extends JavaPlugin {
         CM = new CommandManager(C);
         regCommand();
         regListener();
+
+        MainConsole.sendMessage(Messages.PLUGIN_ENABLED);
+        new Updater(null).requestRemoteVersion();
     }
 
     @Override public void onDisable() {

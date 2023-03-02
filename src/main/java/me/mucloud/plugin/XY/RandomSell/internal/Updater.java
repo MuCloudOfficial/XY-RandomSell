@@ -1,86 +1,91 @@
 package me.mucloud.plugin.XY.RandomSell.internal;
 
 import me.mucloud.plugin.XY.RandomSell.Main;
+import org.bukkit.configuration.InvalidConfigurationException;
+import org.bukkit.configuration.file.FileConfiguration;
+import org.bukkit.configuration.file.YamlConfiguration;
+import org.bukkit.entity.Player;
+import org.bukkit.scheduler.BukkitRunnable;
 
+import javax.annotation.Nullable;
 import java.io.BufferedReader;
 import java.io.IOException;
 import java.io.InputStreamReader;
 import java.net.URL;
 import java.util.List;
-import java.util.concurrent.CompletableFuture;
 
-/**
- * @deprecated 更新器未完成
- */
-@Deprecated
 public class Updater {
 
-    private static final String Source = "https://raw.githubusercontent.com/MuCloudOfficial/XY-RandomSell/master/src/main/resources/plugin.yml?token=GHSAT0AAAAAAB54XEOCRRE25ZXKHDXRO72OY7QOCMQ";
+    private static final Main Plugin = Main.INSTANCE;
+    private static final String Source = "https://raw.githubusercontent.com/MuCloudOfficial/XY-RandomSell/master/src/main/resources/plugin.yml";
+
+    private static double CurrentInternalVersion;
+
     private static String RemoteVersion;
     private static String RemoteVersionCN;
     private static double RemoteInternalVersion;
-
     private static List<String> NewVersionDetail;
-    private static Configuration C;
+    @Nullable private Player Caller;
 
-    public Updater(Configuration c){
-        C = c;
+    public Updater(@Nullable Player caller){
+         CurrentInternalVersion = Plugin.getConfiguration().getInternalVersion();
+         Caller = caller;
     }
 
-    public static void requestRemoteVersion(){
-        CompletableFuture.supplyAsync(() -> {
-            try {
-                if (C.isCheckUpdate()) {
-                    try (BufferedReader br = new BufferedReader(new InputStreamReader(new URL(Source)
-                            .openStream()))) {
-                        String s;
+    public void requestRemoteVersion(){
+        new BukkitRunnable(){
+            @Override public void run() {
+                try{
+                    BufferedReader br = new BufferedReader(new InputStreamReader(new URL(Source).openStream()));
 
-                        while ((s = br.readLine()) != null) {
-                            if(s.contains("internalVersion")){
-                                RemoteInternalVersion = Double.parseDouble(s.split(":")[1].trim());
-                                break;
-                            }
-                        }
+                    FileConfiguration fc = new YamlConfiguration();
+                    fc.load(br);
 
-                        if(Main.INSTANCE.getConfiguration().getInternalVersion() < RemoteInternalVersion){
-                            while ((s = br.readLine()) != null) {
-                                if(s.contains("version")){
-                                    RemoteInternalVersion = Double.parseDouble(s.split(":")[1].trim());
-                                    break;
-                                }
-                                if(s.contains("versionCN")){
-                                    RemoteVersionCN = s.split(":")[1].trim();
-                                    break;
-                                }
-                                if(s.contains("newVersionDetail")){
-                                    NewVersionDetail.addAll(List.of(s.trim()
-                                            .replace('\"', ' ')
-                                            .replace('[', ' ')
-                                            .replace(']', ' ')
-                                            .split(",")));
-                                    break;
-                                }
-                            }
-                            MainConsole.warn("当前有新版本");
-                            MainConsole.sendMessage("§a§l" + RemoteVersion);
-                            MainConsole.sendMessage("§a§l" + RemoteVersionCN);
-                            for(String sl : NewVersionDetail){
-                                MainConsole.sendMessage(sl);
-                            }
-                        }
+                    RemoteInternalVersion = fc.getDouble("internalVersion");
+
+                    if(RemoteInternalVersion > CurrentInternalVersion){
+                        RemoteVersion = fc.getString("version");
+                        RemoteVersionCN = fc.getString("versionCN");
+                        NewVersionDetail = fc.getStringList("newVersionDetail");
+                        sendTo(true);
+                    }else{
+                        sendTo(false);
                     }
-
+                } catch (IOException | InvalidConfigurationException e) {
+                    throw new RuntimeException(e);
                 }
-                return true;
-            } catch (IOException e) {
-                return false;
             }
-        }).thenAccept( l -> {
-            if(l){
-                MainConsole.sendMessage("§e§l详情与下载参见 §b§lhttps://github.com/MuCloudOfficial/XY-RandomSell/releases");
-            }
-        });
+        }.runTaskAsynchronously(Plugin);
+    }
 
+    private void sendTo(boolean hasNewerVersion){
+        if(Caller != null){
+            if(hasNewerVersion){
+                Caller.sendMessage(Messages.convert("&7&l| &a&l发现新版本", null, null));
+                Caller.sendMessage(Messages.convert("&7&l| &e&l" + RemoteVersion + " &7&l| &e&l" + RemoteVersionCN + "&b&l版本", null, null));
+                Caller.sendMessage(Messages.convert("&7&l| ========== &e&l新版本概述 &7&l==========", null, null));
+                NewVersionDetail.forEach(l -> {
+                    Caller.sendMessage("&7&l| " + Messages.convert(l, null, null));
+                });
+                Caller.sendMessage(Messages.convert("&7&l| =============================", null, null));
+                Caller.sendMessage(Messages.convert("&7&l| &b&l下载链接 >>> " + "https://github.com/MuCloudOfficial/XY-RandomSell/releases/tag/" + RemoteVersion + "_" + RemoteInternalVersion, null ,null));
+            }else{
+                Caller.sendMessage(Messages.convert("&a&l当前已最新版本", null, null));
+            }
+        }else{
+            if(hasNewerVersion){
+                MainConsole.sendMessage("&7&l| &a&l发现新版本");
+                MainConsole.sendMessage("&7&l| &e&l" + RemoteVersion + " &7&l| &e&l" + RemoteVersionCN + "&b&l版本");
+                MainConsole.sendMessage("&7&l| ========== &e&l新版本概述 &7&l==========");
+                NewVersionDetail.forEach(l -> {
+                    MainConsole.sendMessage("&7&l| " + l);
+                });
+                MainConsole.sendMessage("&7&l| =============================");
+                MainConsole.sendMessage("&7&l| &b&l下载链接 >>> " + "https://github.com/MuCloudOfficial/XY-RandomSell/releases/tag/" + RemoteVersion + "_" + RemoteInternalVersion);
+            }else{
+                MainConsole.sendMessage("&a&l当前已最新版本");
+            }
+        }
     }
 
 }
