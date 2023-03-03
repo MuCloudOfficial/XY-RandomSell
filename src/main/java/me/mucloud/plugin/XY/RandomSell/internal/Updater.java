@@ -62,7 +62,7 @@ public class Updater {
         if(Caller != null){
             if(hasNewerVersion){
                 Caller.sendMessage(Messages.convert("&7&l| &a&l发现新版本", null, null));
-                Caller.sendMessage(Messages.convert("&7&l| &e&l" + RemoteVersion + " &7&l| &e&l" + RemoteVersionCN + "&b&l版本", null, null));
+                Caller.sendMessage(Messages.convert("&7&l| &e&l" + RemoteVersion + " &7&l| &e&l" + RemoteVersionCN + "&b&l版本    &7&l| 内部版本 " + RemoteInternalVersion, null, null));
                 Caller.sendMessage(Messages.convert("&7&l| ========== &e&l新版本概述 &7&l==========", null, null));
                 NewVersionDetail.forEach(l -> {
                     Caller.sendMessage("&7&l| " + Messages.convert(l, null, null));

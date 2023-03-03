@@ -56,7 +56,7 @@ public class ProductPool {
         }
         List<Product> list = new ArrayList<>();
         for(int i = 1; i < C.getSell_RandomSize();){
-            int random = new Random().nextInt(getMaxID() +1);
+            int random = new Random().nextInt(getSize() +1);
             if(!list.contains(Pool.get(random))){
                 list.add(Pool.get(random));
                 i++;

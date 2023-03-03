@@ -47,6 +47,7 @@ public class SellRepo {
 
         // debug
         MainConsole.sendMessage(BorderIndex.toString());
+        MainConsole.sendMessage(Products.toString());
 
         // 定义边框，INV初始
         BorderFill = new ItemStack(Material.GRAY_STAINED_GLASS_PANE);

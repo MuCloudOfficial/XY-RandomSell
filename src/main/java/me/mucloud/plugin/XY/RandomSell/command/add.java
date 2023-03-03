@@ -60,7 +60,7 @@ public class add {
 
             Sender.sendMessage(Messages.CMD_ADD_FINISH);
         }else if (Sender instanceof Player){
-            if(Sender.hasPermission("xyrs.admin")){
+            if(!Sender.hasPermission("xyrs.admin")){
                 Sender.sendMessage(Messages.CMD_PERMISSION_DENIED);
                 return;
             }
