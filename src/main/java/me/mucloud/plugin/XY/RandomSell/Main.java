@@ -65,12 +65,13 @@ public class Main extends JavaPlugin {
             return;
         }
         Econ = rsp.getProvider();
-        MainConsole.sendMessage(Messages.PLUGIN_PAPI_HOOKED);
+        MainConsole.sendMessage(Messages.PLUGIN_VAULT_HOOKED);
     }
 
     private void requestHookPAPI(){
         if(Bukkit.getPluginManager().getPlugin("PlaceholderAPI") == null){
             MainConsole.sendMessage(Messages.PLUGIN_NOT_FOUND_PAPI);
+            HookPAPI = false;
         }else{
             HookPAPI = true;
             MainConsole.sendMessage(Messages.PLUGIN_VAULT_HOOKED);

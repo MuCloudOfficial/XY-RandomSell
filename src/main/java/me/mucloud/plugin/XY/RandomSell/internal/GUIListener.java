@@ -52,8 +52,12 @@ public class GUIListener implements Listener {
 
         SellRepo sr = Main.INSTANCE.getSP().getSellRepo(p);
         if(sr.isWaitingSell()){
-            if(message.matches("[0-9]+")){
+            if(message.equalsIgnoreCase("all")){
+                sr.sellAll(sr.getWaitingProductID());
+                apce.setCancelled(true);
+            }else if(message.matches("^[1-9][0-9]*")) {
                 sr.sell(sr.getWaitingProductID(), Integer.parseInt(message));
+                apce.setCancelled(true);
             }
         }
     }

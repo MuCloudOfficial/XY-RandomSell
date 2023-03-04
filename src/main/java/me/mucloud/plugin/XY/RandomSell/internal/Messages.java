@@ -173,7 +173,14 @@ public class Messages {
             return list;
         }
         List<String> result = new ArrayList<>();
-        list.forEach( l -> replacedMap.forEach( (k, v) -> result.add(convert(l, k, v))));
+        for(String s : list){
+            for(Map.Entry<String, String> e : replacedMap.entrySet()){
+                if(s.contains(e.getKey())){
+                    s = convert(s, e.getKey(), e.getValue());
+                }
+            }
+            result.add(s);
+        }
         return result;
     }
 

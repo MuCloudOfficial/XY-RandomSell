@@ -52,8 +52,8 @@ zh_CN:
 
   PRODUCT_LIST_PREFIX: "&6&l当前收购项列表: "
   PRODUCT_DETAIL:
-    - "当前收购量: {amount}"
-    - "收购价: {price}"
+    - "&6&l当前收购量: &a&l{amount}"
+    - "&6&l收购价: &a&l{price}"
 
   CMD_ARG_ERROR: "&4&l指令参数错误"
   CMD_MAT_ERROR: "&4&l物品参数错误，请检查"

@@ -13,7 +13,7 @@ public class CommandManager implements CommandExecutor, TabCompleter {
 
     private final Configuration C;
     private final List<String> SubCommands = List.of(
-            "info", "gui", "addProduct", "delProduct", "listProduct", "checkVersion"
+            "info", "gui", "add", "del", "list", "checkVersion"
     );
 
     public CommandManager(Configuration c){

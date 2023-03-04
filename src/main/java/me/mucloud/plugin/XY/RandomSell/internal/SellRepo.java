@@ -78,6 +78,7 @@ public class SellRepo {
                     continue;
                 }
                 list.set(ii, Products.get(i).toIcon(Target));
+                break;
             }
         }
 
@@ -161,9 +162,18 @@ public class SellRepo {
         for(Product p : Products){
             p.equals(id);
             p.sell(Target, amount);
-            Target.closeInventory();
             WaitingSell = false;
         }
+        scanEmptyProduct();
+    }
+
+    public void sellAll(int id){
+        for(Product p : Products){
+            p.equals(id);
+            p.sellAll(Target);
+            WaitingSell = false;
+        }
+        scanEmptyProduct();
     }
 
     public boolean isNoNext() {
@@ -207,6 +217,14 @@ public class SellRepo {
                 toInv();
             }
         });
+    }
+
+    private void scanEmptyProduct(){
+        for(Product p : Products){
+            if(p.isFinalize()){
+                Products.remove(p);
+            }
+        }
     }
 
 }

@@ -7,14 +7,14 @@ main: me.mucloud.plugin.XY.RandomSell.Main
 api-version: 1.13
 #===================================================#
 name: XY-RandomSell
-internalVersion: 1.1035
+internalVersion: 1.1037
 versionCN: 星空
 version: StarrySky
 authors: [ "Mu_Cloud" ]
 website: https://github.com/MuCloudOfficial/XY-RandomSell
 softdepend: [ "Vault" , "PlaceholderAPI" ]
 #===================================================#
-newVersionDetail: [ "新版本概述:" ]
+newVersionDetail: [ "§e§l新版本概述:" , "§4§l添加了更新器" ]
 #===================================================#
 commands:
   xyrs:
