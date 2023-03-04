@@ -14,7 +14,7 @@ authors: [ "Mu_Cloud" ]
 website: https://github.com/MuCloudOfficial/XY-RandomSell
 softdepend: [ "Vault" , "PlaceholderAPI" ]
 #===================================================#
-newVersionDetail: [ "§e§l新版本概述:" , "§4§l添加了更新器" ]
+newVersionDetail: [ " §4§l> 添加了更新器" ]
 #===================================================#
 commands:
   xyrs:
