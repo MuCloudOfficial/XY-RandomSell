@@ -55,7 +55,7 @@ public class SellRepo {
                 54,
                 Messages.requestPlaceholder(Target, Messages.GUI_SELL_TITLE));
 
-        // 定义初始框架和内容
+        // 定义初始框架和初始内容
         List<ItemStack> list = new ArrayList<>(54);
         for(int i = 0; i < 54; i++){
             list.add(i, new ItemStack(Material.AIR));
@@ -67,9 +67,10 @@ public class SellRepo {
         }
 
         // 定义内容
-        for(int i = Page *28; i < (Page -1) *28; i++){
+        for(int i = Page *28; i < (Page +1) *28; i++){
             if(i == Products.size()){
                 noNext = true;
+                MainConsole.sendMessage("该页无下一页");
                 break;
             }
             for(int ii = 0; ii < 54; ii++){
@@ -83,25 +84,26 @@ public class SellRepo {
         // 定义翻页
         if(Page == 0){
             noPrevious = true;
+            MainConsole.sendMessage("该页无上一页");
         }
 
         if(!noPrevious){
-            ItemStack previous = BorderFill.clone();
+            ItemStack previous = new ItemStack(Material.GRAY_STAINED_GLASS_PANE);
             ItemMeta im_previous = previous.getItemMeta();
             im_previous.setDisplayName("§b§l上一页");
             previous.setItemMeta(im_previous);
-            list.set(53, previous);
+            list.set(51, previous);
         }
 
         if(!noNext){
-            ItemStack next = BorderFill.clone();
+            ItemStack next = new ItemStack(Material.GRAY_STAINED_GLASS_PANE);
             ItemMeta im_next = next.getItemMeta();
             im_next.setDisplayName("§b§l下一页");
             next.setItemMeta(im_next);
-            list.set(51, next);
+            list.set(53, next);
         }
 
-        ItemStack cancel = BorderFill.clone();
+        ItemStack cancel = new ItemStack(Material.GRAY_STAINED_GLASS_PANE);
         ItemMeta im_cancel = cancel.getItemMeta();
         im_cancel.setDisplayName("§e§l关闭收购");
         cancel.setItemMeta(im_cancel);

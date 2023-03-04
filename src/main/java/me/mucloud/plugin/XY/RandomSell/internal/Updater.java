@@ -62,12 +62,12 @@ public class Updater {
         if(Caller != null){
             if(hasNewerVersion){
                 Caller.sendMessage(Messages.convert("&7&l| &a&l发现新版本", null, null));
-                Caller.sendMessage(Messages.convert("&7&l| &e&l" + RemoteVersion + " &7&l| &e&l" + RemoteVersionCN + "&b&l版本    &7&l| 内部版本 " + RemoteInternalVersion, null, null));
+                Caller.sendMessage(Messages.convert("&7&l| &e&l" + RemoteVersion + " &7&l| &e&l" + RemoteVersionCN + "&b&l版本 &7&l| 内部版本 " + RemoteInternalVersion, null, null));
                 Caller.sendMessage(Messages.convert("&7&l| ========== &e&l新版本概述 &7&l==========", null, null));
                 NewVersionDetail.forEach(l -> {
                     Caller.sendMessage("&7&l| " + Messages.convert(l, null, null));
                 });
-                Caller.sendMessage(Messages.convert("&7&l| =============================", null, null));
+                Caller.sendMessage(Messages.convert("&7&l| ================================", null, null));
                 Caller.sendMessage(Messages.convert("&7&l| &b&l下载链接 >>> " + "https://github.com/MuCloudOfficial/XY-RandomSell/releases/tag/" + RemoteVersion + "_" + RemoteInternalVersion, null ,null));
             }else{
                 Caller.sendMessage(Messages.convert("&a&l当前已最新版本", null, null));
@@ -75,12 +75,12 @@ public class Updater {
         }else{
             if(hasNewerVersion){
                 MainConsole.sendMessage("&7&l| &a&l发现新版本");
-                MainConsole.sendMessage("&7&l| &e&l" + RemoteVersion + " &7&l| &e&l" + RemoteVersionCN + "&b&l版本");
+                MainConsole.sendMessage("&7&l| &e&l" + RemoteVersion + " &7&l| &e&l" + RemoteVersionCN + "&b&l版本 &7&l| 内部版本 " + RemoteInternalVersion);
                 MainConsole.sendMessage("&7&l| ========== &e&l新版本概述 &7&l==========");
                 NewVersionDetail.forEach(l -> {
                     MainConsole.sendMessage("&7&l| " + l);
                 });
-                MainConsole.sendMessage("&7&l| =============================");
+                MainConsole.sendMessage("&7&l| ================================");
                 MainConsole.sendMessage("&7&l| &b&l下载链接 >>> " + "https://github.com/MuCloudOfficial/XY-RandomSell/releases/tag/" + RemoteVersion + "_" + RemoteInternalVersion);
             }else{
                 MainConsole.sendMessage("&a&l当前已最新版本");

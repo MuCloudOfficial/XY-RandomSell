@@ -1,6 +1,7 @@
 package me.mucloud.plugin.XY.RandomSell.internal;
 
 import me.mucloud.plugin.XY.RandomSell.Main;
+import org.bukkit.Material;
 import org.bukkit.entity.Player;
 import org.bukkit.event.EventHandler;
 import org.bukkit.event.Listener;
@@ -16,17 +17,19 @@ public class GUIListener implements Listener {
         if(Main.INSTANCE.getSP().isView(p)){
             SellRepo sr = Main.INSTANCE.getSP().getSellRepo(p);
             int i = ice.getRawSlot();
-            if(i == 50 && !sr.isNoPrevious()){
+            if(i == 51 && !sr.isNoPrevious()){
                 sr.previousPage();
             }
-            if(i == 52 && !sr.isNoNext()){
+
+            if(i == 53 && !sr.isNoNext()){
                 sr.nextPage();
             }
-            if(i == 51){
+
+            if(i == 52){
                 sr.cancelView();
             }
 
-            if(!sr.clickIsBorder(i)){
+            if(!sr.clickIsBorder(i) && ice.getCurrentItem() != null){
                 ItemMeta im = ice.getCurrentItem().getItemMeta();
                 String[] rawInf = im.getDisplayName().split(":");
                 sr.setWaitingProductID(Integer.parseInt(rawInf[rawInf.length -1].trim()));
