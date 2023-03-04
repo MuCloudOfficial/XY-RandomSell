@@ -60,6 +60,7 @@ public class Updater {
 
     private void sendTo(boolean hasNewerVersion){
         if(Caller != null){
+            Caller.sendMessage("§6§l正在检查更新,请稍候...");
             if(hasNewerVersion){
                 Caller.sendMessage(Messages.convert("&7&l| &a&l发现新版本", null, null));
                 Caller.sendMessage(Messages.convert("&7&l| &e&l" + RemoteVersion + " &7&l| &e&l" + RemoteVersionCN + "&b&l版本 &7&l| 内部版本 " + RemoteInternalVersion, null, null));
@@ -73,6 +74,7 @@ public class Updater {
                 Caller.sendMessage(Messages.convert("&a&l当前已最新版本", null, null));
             }
         }else{
+            MainConsole.sendMessage("§6§l正在检查更新,请稍候...");
             if(hasNewerVersion){
                 MainConsole.sendMessage("&7&l| &a&l发现新版本");
                 MainConsole.sendMessage("&7&l| &e&l" + RemoteVersion + " &7&l| &e&l" + RemoteVersionCN + "&b&l版本 &7&l| 内部版本 " + RemoteInternalVersion);
